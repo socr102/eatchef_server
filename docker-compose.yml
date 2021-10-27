@@ -1,0 +1,144 @@
+version: '3.7'
+
+networks:
+  #  docker network create --driver=bridge --internal=false --attachable main-gnet
+  default:
+    driver: bridge
+    external:
+      name: main-gnet
+
+services:
+  postgres:
+    image: postgres:13.3
+    container_name: eatchef-postgres
+    environment:
+      POSTGRES_USER: main
+      POSTGRES_PASSWORD: s5yrbJ
+      POSTGRES_DB: main
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U main" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:6
+    container_name: eatchef-redis
+    restart: always
+    ports:
+      - 6379:6379
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 5m
+      timeout: 5s
+      retries: 5
+
+  rabbit:
+    image: rabbitmq:3.8.17
+    container_name: eatchef-rabbit
+    environment:
+      - RABBITMQ_DEFAULT_USER=main
+      - RABBITMQ_DEFAULT_PASS=BWgxXi6AoAM5VJwW
+      - RABBITMQ_ERLANG_COOKIE=asfg42-4@#!314--R3F3CSD
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+
+  main: &main
+    build:
+      context: .
+      args:
+        INSTALL_DEV_REQUIREMENTS: "true"
+    container_name: eatchef-main
+    environment:
+      - DJANGO_SETTINGS_MODULE=main.settings.local
+      - WAITING_DATABASE=true
+      - MIGRATE=true
+      - DB_HOST=eatchef-postgres
+      - DB_PORT=5432
+    command: python manage.py runserver 0.0.0.0:80
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - 4096:80
+    depends_on:
+      - postgres
+      - rabbit
+
+  main-tasks:
+    <<: *main
+    container_name: eatchef-tasks
+    environment:
+      - DJANGO_SETTINGS_MODULE=main.settings.local
+      - WAITING_DATABASE=true
+      - MIGRATE=false
+      - DB_HOST=eatchef-postgres
+      - DB_PORT=5432
+    command: celery -A main worker -B -l info -n worker_celery
+    healthcheck:
+      test: celery inspect ping
+    ports: [ ]
+    depends_on:
+      - postgres
+      - rabbit
+
+  logger:
+    image: umputun/docker-logger
+    container_name: "logger"
+    hostname: "logger"
+    restart: always
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"
+    environment:
+      - LOG_FILES=true
+      - LOG_SYSLOG=false
+      - EXCLUDE=docker-logger
+      - MAX_FILES=10
+      - MAX_SIZE=50
+      - MAX_AGE=20
+      - DEBUG=false
+      - TIME_ZONE=Europe/Kaliningrad
+    volumes:
+      - ./logs:/srv/logs
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  node_exporter:
+    image: prom/node-exporter:latest
+    container_name: node_exporter
+    restart: unless-stopped
+    hostname: "node_exporter"
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"
+    #networks:
+    #  - proxy
+    ports:
+      - '9100:9100'
+    command:
+      - '--path.rootfs=/host'
+    network_mode: host
+    pid: host
+    volumes:
+      - '/:/host:ro,rslave'
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: cadvisor
+    ports:
+      - 8080:8080
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro

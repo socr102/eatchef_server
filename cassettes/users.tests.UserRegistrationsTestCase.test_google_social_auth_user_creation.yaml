@@ -1,0 +1,156 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Authorization:
+      - Bearer ya29.a0ARrdaM_KU5JXkFqvVB8XD_TmjcU5Au2jbbVWggi0xcEXYYBW1Xyi6UojY2JXrV1CE5Lc6s2WZj0hEcX79UVL91JD892Kg3BaJ6lXI9vNwLZ4OaD-jdTW0YFzVdl1hhHqplnH5RlveVb1Hq98cpqVFiNznZUHYQ
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.25.1
+    method: GET
+    uri: https://www.googleapis.com/oauth2/v3/userinfo
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAC/2WOXUvDMBSG7/crSq7tmtqPLbtSkA2GMC8EHQglS07buDTp8lHcxP+uaVEUb8/z
+        HJ73fRZFyPoDWkUoTZcYL3BKyiUpcE7yoswKdBUMRTsIyh0MIHUPJtpozQ/CTbgRA6jqnzTBmnZC
+        nn/on8deMOfNeG+d6+0qSWSbzRutGwnegmFaOVBuznSX0Di53bVpvnl9vtT3231+eTpncbG/rsqj
+        Hh75guP+RNzb2rrdg6IvHuOMW1LGbIpBR4UMKf49MITCmJsmoBD5ZVYDGFEL4F8vzngYidSMynGv
+        8Wj28Qmv5uZ5PwEAAA==
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443";
+        ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443";
+        ma=2592000; v="46,43"
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 23 Aug 2021 08:22:08 GMT
+      Expires:
+      - Mon, 01 Jan 1990 00:00:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - ESF
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Origin
+      - X-Origin
+      - Referer
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-XSS-Protection:
+      - '0'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Connection:
+      - close
+      Host:
+      - lh3.googleusercontent.com
+      User-Agent:
+      - Python-urllib/3.9
+    method: GET
+    uri: https://lh3.googleusercontent.com/a-/AOh14GjXzfLJY4zWy3-5Y2_6kovTd7d0pq9txFstOPna=s96-c
+  response:
+    body:
+      string: !!binary |
+        iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAABHNCSVQICAgIfAhkiAAAAF96VFh0
+        UmF3IHByb2ZpbGUgdHlwZSBBUFAxAAAImeNKT81LLcpMVigoyk/LzEnlUgADYxMuE0sTS6NEAwMD
+        CwMIMDQwMDYEkkZAtjlUKNEABZiYm6UBoblZspkpiM8FAE+6FWgbLdiMAAAIuUlEQVR4nO2cbWwc
+        RxnHf8/s7vnufPbZeXGShrw5rUQiVIqgrUpFAYEqFRCiQa0QKCJSQbQpFRCpEqrKB0Tpq1KkVELl
+        RYWoIIogUiU+FaGKl6qoIEhF1aQtrZPmjSR23nz2ne9ud4YPd3Yutm99a589l2Z+kj/c7jOzz85/
+        d+Z5ZmYt6b6rT5MYIxgTIKoMSPLyjkl8Qa+cV0kB0G115kpE2XbgSscJYBkngGWcAJZxAljGCWAZ
+        J4BlnACWcQJYxglgGSeAZZwAlnECWMYJYBkngGWcAJZxAljGCWAZJ4BlnACWcQJYxglgGSeAZZwA
+        lvHbW12E4d32VtlmhNVAtiXb0lgVwqMJr5Am03dVy9ZtEmACzQkAstGDeGYVBtOeqtuKpuT/nlBe
+        QhkQBptalsaq3Hj9Zu744i6qYdhS7UoJJ0+e5kdP7mlZBMn0DS6opQxDCOvoL/2GdPmjyGWwVbTq
+        H2c08zRF/yE8s5HZeuLS+aN8Z9e3eHL3E4nqfvvtd7jmmqvJ9DUXt5EFjQGaIbLRD1lz/giZ8s2A
+        YKDj//xwLcsLP2Dl+H4iOQzM/oRHUZS4TarVaiL7eQugGSIX7qG/8ABAR3Y4cRggXbmO1YWjRHIE
+        WxuN5yWA4TBd+mv0jd132TV8IwYIwvexcvwf9TfhUkQWvzudhwAaLZplY7sv68afpPYmXE82fBDD
+        UMOZDMPDZxf9+okFMBwmX/kFnu5dDH+sYID8+LfRMvkLQNB68bulhAIYtEB36faWnn7pkL9W8PVy
+        suEDGA5NHfM8r8XS8ydRHmA4Tia6F0/nWxDAUOp6mdA7gsFYCU4NBmV6SVc+gh+tifXZAN3lOyll
+        H6756vfy5lvv8Oyzv57KA4wxpNNpvvLlL7XNx0R5gGaIZRN/Jjvx8dibCb0TnOpZW7vAQj1sA5FA
+        vvpj8mP3zPngHOsXPLMJkFkz4Q988CZee/XlpuUPHnyDrVu3tJwHJHsDBFLVLfFPkpQ41bMWYQAh
+        l6T6RcM3MBrsRGVX0FO8o6n/AmSi+yirnyKsJZMLoCFbLp0fY3l/vq2+JRgDIsSAHw00tRCg0P1M
+        ve/tjMafxDMbOd91J5Eai7XrCm8BykvjFAkEMAyT1vfMYRMxGnwTYcOCHWs/CmWglP5T026xlhds
+        XtLwOsEbUCTQ18VaVFJv1G9u8aOH+dFHMfhtrIUfrcYs4cCVKAz1o7VNzwlQ9Q8gHZydCf2U1XMY
+        ms/xKN2/hB4lGIQNoPSyWJuKd6DJmTKG41O/al1U/FtiGAMufsQv1CKT+DIjwGhDmemRSK186J/C
+        D2efLhaTrj9EmqVYr0oUBSnTHR9+qoPApSLVpqsH6KnuxdMDhN4QBf/e+kA9e6imGcI3n6S7+hTK
+        9FDx/sNY8F2UWYEwWwZuiOQQ6WgHmfDzYALK/ksU/cfwzDogmLIUA1qdAZoIACg2AxNAV8zdtofW
+        BRAQ0xNrEsrfkYbVJs0Q3dHj9Bfuv8Sul68z0ruTivr5DBEiGaK/vI9ccdvUsW5uo1d9g9O9t6I5
+        jNDoR63xVxRfIVO+Yepojs/R6+/kVG4DivWX3KqWAkLzGVxl3k8k/0RmEaDdC00JoiAQE99taI4w
+        eaOGYVJmO/2F+2fMx0PAitGf1UtVGq4xRK76BLnithlllO5jYPQFtAzT2HSaQyyb+AOZ8g0zygTh
+        egbGD9SnmxvuRSZi70ORgVnHiYienviHMCkJO7l481r0UOtnDQV6S7ua2gqQr+zDcGzqmBboKW1v
+        +ox5up9c+FDDfI3BCGRLn5m1jKGWOAb60/UxZdLPOZYYTZbZBWg/izbKGAE/uqppY9ZWpjbNOO9F
+        q2LrDaItDb9KBOZWZI7b6Io+S+OAPtdgXqtvacK5RRNAACPF+PNqfMZxI6XYerU0ZrIpIv44py9a
+        HaNxIJ6bpYulF08AA6Wuv8Y+a+Op3yHTIpRy17/iywSPI6yp//LRAlX/cFN7LWWK3m6E5jmMTVoW
+        oNYo8f1iLX42dftNXEh9lap/aEaDClBK/42StwdhXYMz6zib/hiRKswoo4DR7r1oXgcyF4+b5Zzp
+        vrvBx0uvcy73fZSZrGHSz87J1BO9AXMNXh4f4mJUI3hmIyd7BhnLPo9W54CIyDvFhdxPGMncgmem
+        5wEBwmr+19tLMf0XtCoAIaF/hJGe7zGa2jEjbBXyRPICJ/uuZSL1b4yUMFSoBm9xOr+dCe+RWfKN
+        zknXW88DDBgpxFemr6WinkdI148oPLOJC6nbOdcQUivDLI0/SRbFes6mP4HJXFpGNSkjDGIYZiT7
+        4al5HAHE5GI3X3UCiTJhrcZiExhfb6Wi9gLLG44KwiBeoofORzGY8EHNzqOMfRKNAZEajrUJoq0L
+        9eeKI9EYEKrmG28nkx7dCWuQlxEJBFhGxXsl1iIVbq5HHMm2513JJOiC8vW59HjylX1okm7pvnJJ
+        8AZMzqXHd0PdxW143DRtl5mjGQnXA6Cc2k8Qboh9E1ZdeJEzvXczofZ23AqZFjCyNBNtrZDwA40B
+        xoKnyPGFWCsxaVZe+CWh9yihd4KOig1F44frOsajRAIIOarqRar+u/hh/M4HA3jRarxo9UL8e8+T
+        eDJOGRjNPN0RO97eCyQWQBik6D9KJfivE6ENzGs62jNrGOm+OXZ7h6M15rkekMEwzHB+R1uduRKZ
+        94KMMEhVfsWp/KfQ6qzrjubJglbEhEEi2c+J/HJGu58hqgtxuf/FBYdzfbQRBEmWPtvwobbQj2f6
+        KAR3cSF1Fyl9G765kaXaVdB+fEL1KkLfjDOSyfHa62/y8COPEVZnLk6JUpw+PQwJdoYv+EPt6Uzf
+        Ung5Erd1cqIcYUrNp2MgR6av+Rb+GddqtwCOZLj/lmIZJ4BlnACWcQJYxglgGSeAZZwAlnECWMYJ
+        YBkngGWcAJZxAljGCWAZJ4BlnACWcQJYxglgGSeAZZwAlnECWMYJYBkngGWcAJZxAljGCWCZ/wOM
+        qNPFIn05TwAAAABJRU5ErkJggg==
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - Content-Length
+      Age:
+      - '2395'
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443";
+        ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443";
+        ma=2592000; v="46,43"
+      Cache-Control:
+      - public, max-age=86400, no-transform
+      Connection:
+      - close
+      Content-Disposition:
+      - inline;filename="unnamed.png"
+      Content-Length:
+      - '2413'
+      Content-Type:
+      - image/png
+      Date:
+      - Mon, 23 Aug 2021 07:42:13 GMT
+      ETag:
+      - '"v8"'
+      Expires:
+      - Tue, 24 Aug 2021 07:42:13 GMT
+      Server:
+      - fife
+      Timing-Allow-Origin:
+      - '*'
+      Vary:
+      - Origin
+      X-Content-Type-Options:
+      - nosniff
+      X-XSS-Protection:
+      - '0'
+    status:
+      code: 200
+      message: OK
+version: 1

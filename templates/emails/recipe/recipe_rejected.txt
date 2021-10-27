@@ -1,0 +1,3 @@
+Your recipe ({{ url }}) {{ recipe.title }} has been reviewed and is {{ recipe_status }}.
+
+Your recipes: {{ uploads_url }}

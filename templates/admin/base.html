@@ -1,0 +1,49 @@
+{% extends 'admin/base.html' %}
+
+{% block extrahead %}
+    {{ block.super }}
+    <style>
+    a.button.accept {
+        background-color: #26C281;
+        color: white;
+        padding: 5px 10px;
+        margin-right: 2px;
+    }
+    a.button.accept:hover {
+        background-color: #21a870;
+    }
+    a.button.reject {
+        padding: 5px 10px;
+        background-color: #f69494;
+        color: white;
+        margin-left: 2px;
+    }
+    a.button.reject:hover {
+        background-color: #ea7878;
+    }
+    a.non_clickable {
+        cursor:default;
+        pointer-events: none;
+    }
+    a.button.selected {
+        color: #333;
+        background-color: transparent;
+        padding: 5px 0px !important;
+    }
+
+    #result_list tr:hover {
+        background-color: #f7feff !important;
+        color: #000 !important;
+    }
+
+    .results {
+        transform: rotateX(180deg);
+        overflow-x: auto;
+    }
+
+    #result_list {
+        transform: rotateX(180deg);
+    }
+
+    </style>
+{% endblock %}

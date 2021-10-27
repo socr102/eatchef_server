@@ -1,0 +1,23 @@
+{% extends 'emails/layouts/base.html' %}
+
+{% block content %}
+<tr>
+    <td style="color: #464646; text-align: center; width: 80%; margin: 0 auto;">
+        <p style="font-size: 32px; line-height: 39px; color: #353535;"><b>Attention!</b></p>
+        <p style="width: 80%; margin: 0 auto; border: 2px dashed #FFD994; border-radius: 18px; font-size: 24px; line-height: 29px; padding: 35px 20px; text-align: center; color: #353535;">
+            <b>This is your new password:</b>
+            <br><br>
+            <b>{{ new_password }}</b>
+        </p> 
+    </td>
+</tr>
+<tr>
+    <td style="height: 37px;" colspan="2"></td>
+</tr>
+<tr>
+    <td style="font-size: 14px; line-height: 24px; color: #464646; text-align: center;">
+        <p style="width: 80%; margin: 0 auto; font-size: 24px; line-height: 29px; padding: 10px 35px;">Follow this <a href="{{ auth_url }}" style="color: #ffa500; text-decoration: none;">link</a> to authorize</p>     
+        <p style="width: 80%; margin: 0 auto; font-size: 24px; line-height: 29px; padding: 10px 35px;">You can change your password in your profile</p>     
+    </td>
+</tr>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'emails/layouts/base.html' %}
+
+{% block title %}
+    Recipe {{ recipe.title }} reviewed
+{% endblock %}
+
+{% block content %}
+<tr>
+    <td style="font-size: 14px; line-height: 24px; color: #464646;">
+        <p>Your recipe <a href="{{ url }}">{{ recipe.title }}</a> has been reviewed and is {{ recipe_status }}.</p>
+
+        <p>Your recipes: <a href="{{ uploads_url }}">My Uploads</a></p>
+
+    </td>
+</tr>
+{% endblock %}

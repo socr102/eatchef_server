@@ -1,0 +1,24 @@
+version: "3.9"
+
+networks:
+  proxy: # docker network create --driver=overlay --internal=false --attachable proxy
+    driver: overlay
+    attachable: true
+    internal: false
+    name: proxy
+
+services:
+  main_beat:
+    image: ${MAIN_IMAGE}
+    restart: always
+    container_name: server-beat
+    networks:
+      - proxy
+    env_file:
+      - /data/.server.env
+    command: celery -A main beat -l info --pidfile=/tmp/celeryd.pid
+    healthcheck:
+      test: celery inspect ping
+      interval: 30s
+      timeout: 10s
+      retries: 3

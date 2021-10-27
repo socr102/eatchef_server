@@ -1,0 +1,88 @@
+version: "3.9"
+
+networks:
+  proxy: # docker network create --internal=false --attachable proxy
+    attachable: true
+    internal: false
+    name: proxy
+
+volumes:
+  static_volume:
+  media_volume:
+
+services:
+  main_api:
+    image: ${MAIN_IMAGE}
+    restart: always
+    container_name: server-api
+    networks:
+      - proxy
+    environment:
+      - WAITING_DATABASE=${WAITING_DATABASE:-"true"}
+      - MIGRATE=${MIGRATE:-"false"}
+      - API_DOMAIN=${API_DOMAIN}
+      - ADMIN_DOMAIN=${ADMIN_DOMAIN}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_PORT=${POSTGRES_PORT}
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
+      - RABBITMQ_ERLANG_COOKIE=${RABBITMQ_ERLANG_COOKIE}
+      - MAIN_IMAGE=${MAIN_IMAGE}
+      - GUNICORN_WORKERS_PER_NODE=${GUNICORN_WORKERS_PER_NODE}
+      - BASE_URL=${BASE_URL}
+      - BASE_CLIENT_URL=${BASE_CLIENT_URL}
+      - ALLOWED_HOSTS=${ALLOWED_HOSTS}
+      - DJANGO_SETTINGS_MODULE=${DJANGO_SETTINGS_MODULE}
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
+      - SECURE_AUTH_SALT=${SECURE_AUTH_SALT}
+      - DB_HOST=${DB_HOST}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_PORT=${DB_PORT}
+      - CELERY_BROKER_URL=${CELERY_BROKER_URL}
+      - EMAIL_HOST=${EMAIL_HOST}
+      - EMAIL_HOST_USER=${EMAIL_HOST_USER}
+      - EMAIL_HOST_PASSWORD=${EMAIL_HOST_PASSWORD}
+      - EMAIL_FROM=${EMAIL_FROM}
+    volumes:
+      - media_volume:/usr/src/app/media
+      - static_volume:/usr/src/app/static
+    command: gunicorn -b 0.0.0.0:80 --workers=${GUNICORN_WORKERS_PER_NODE:-4} --timeout 120 --log-level=info --log-file=- main.wsgi:application
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=proxy
+      - traefik.http.middlewares.limit.buffering.maxRequestBodyBytes=200000000
+      - traefik.http.middlewares.limit.buffering.memRequestBodyBytes=200000000
+      - traefik.http.routers.main_api.entrypoints=websecure
+      - traefik.http.routers.main_api.rule=Host(`${API_DOMAIN}`)
+      - traefik.http.routers.main_api.tls=true
+      - traefik.http.routers.main_api.tls.certresolver=letsencrypt
+      - traefik.http.routers.main_api.service=main_api_service
+      - traefik.http.services.main_api_service.loadbalancer.server.port=80
+  main_api_proxy:
+    image: nginx:1.19.2
+    networks:
+      - proxy
+    command: nginx -c /data/conf/nginx.conf
+    volumes:
+      - ./main_proxy/nginx.conf:/data/conf/nginx.conf:ro
+      - ./main_proxy/conf.d:/data/conf.d:ro
+      - media_volume:/media
+      - static_volume:/static
+    depends_on:
+      - main_api
+    healthcheck:
+      test: service nginx status || exit 1
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=proxy
+      - traefik.http.routers.main_api_static.entrypoints=websecure
+      - traefik.http.routers.main_api_static.rule=Host(`${API_DOMAIN}`) && PathPrefix(`/media`, `/static`)
+      - traefik.http.routers.main_api_static.tls=true
+      - traefik.http.routers.main_api_static.tls.certresolver=letsencrypt
+      - traefik.http.routers.main_api_static.service=main_api_static_service
+      - traefik.http.services.main_api_static_service.loadbalancer.server.port=80
+

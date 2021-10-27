@@ -1,0 +1,17 @@
+{% block title %}
+    Chef Pencil's record Approved: {{ chef_recipe_record.title }}
+{% endblock %}
+
+{% block content %}
+    Hi, {{ user.full_name }}
+
+    Congratulations, we reviewed your Chef Pencil's record {{ chef_recipe_record.title }} and it’d been approved and published.
+
+    {{ image_url }}"
+
+    {{ chef_recipe_record.title }}
+
+    {{ url }}
+
+    Waiting for more creations from you!
+{% endblock %}

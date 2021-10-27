@@ -1,0 +1,26 @@
+{% extends 'emails/layouts/base.html' %}
+
+{% block title %}
+    New comments in recipe {{ chef_pencil_record.title }}
+{% endblock %}
+
+{% block content %}
+<tr>
+    <td style="font-size: 16px; line-height: 24px; color: #464646; text-align: center; padding-bottom: 30px;" colspan="3">
+        <b style="font-size: 32px; line-height: 39px;">Hi, {{ user.full_name }} </b>
+
+        <p style="padding: 0 60px; font-size: 24px; line-height: 29px;">{{ comments|length }} new comment(s) in your Chef Pencil's record <a href="{{ url }}">{{ chef_pencil_record.title }}</a></p>
+    </td>
+</tr>
+<tr>
+    <td style="width: 10%;"></td>
+    <td style="font-size: 24px; line-height: 29px; color: #464646; text-align: center; border: 1px solid #b8b8b8; border-radius: 5px; padding: 0 0 30px 0;">       
+        <p style="margin: 0 0 20px 0;"><img width="100%" height="100%" src="{{ image_url }}" style="border-radius: 5px;"/></p>
+
+        <p style="padding: 0 20px; font-size: 24px; line-height: 29px; color: #464646;">{{ chef_pencil_record.title }}</p>
+
+        <p><a href="{{ url }}" style="color: #ffaa00; text-decoration: none; font-size: 20px;">View link</a></p>
+    </td>
+    <td style="width: 10%;"></td>
+</tr>
+{% endblock %}

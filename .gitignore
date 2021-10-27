@@ -1,0 +1,47 @@
+### Python template
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+.vscode
+.idea
+requirements.txt
+venv
+media
+test_files
+app-messages
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# папка с данными бд из docker-compose
+pgdata
+# связанные с кроном и отложенными операциями через celery файлы
+celerybeat*
+auction/**
+coverage/**
+companies/**
+estate/**
+feedback/**
+
+main/settings/local.py
+main/settings/local-tests.py
+main/settings/local-docker.py
+
+recipe_data/settings
+## папка изображений с watermark до их загрузки
+tmp
+dev_preload_code.py
+*.err

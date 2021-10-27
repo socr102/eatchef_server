@@ -1,0 +1,3 @@
+Your Chef Pencil's records ({{ url }}) {{ chef_recipe_record.title }} has been reviewed and is rejected. Reason: {{ rejection_reason }}.
+
+Your Chef Pencil's records: {{ uploads_url }}

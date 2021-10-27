@@ -1,0 +1,30 @@
+{% block title %}
+    Welcome to EatChefs!
+{% endblock %}
+
+{% block content %}
+    Hi!
+
+    Welcome to EatChefs!
+
+    Thank you for registration. We are happy to have you on our foodies’ platform. We would love to share with you our best dishes and new amazing recipes produced by the globe’s largest online home chef community.
+
+    You can complete your profile ({{ url }}) here. Or even better! Join the community as Home Chef and unleash your culinary skills unto the world.
+
+    This is your chance to get on-board during our testing phase which, once complete, will instantly grant you access to:
+
+    Exciting opportunities and exclusive way to exhibit your chef abilities
+
+    Special features on our platform to share your creative dish clips
+
+    The ability to earn VOTES and REVIEWS from food lovers and fellow chefs worldwide
+
+    Ready to share your skills online? Login ({{ site_url }}) here to add YOUR flavor to our global team. We can’t wait to see you in the kitchen.
+
+    If you haven’t ever registered to Eatchefs, please contact our support: Support@eatchefs.com.
+
+    Note: For the safety of our users, we never store your password unencrypted.
+{% endblock %}
+
+
+

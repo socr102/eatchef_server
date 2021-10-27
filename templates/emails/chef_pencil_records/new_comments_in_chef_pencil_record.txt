@@ -1,0 +1,2 @@
+{{ comments|length }} new comment(s) in your Chef Pencil's Record ({{ url }}) {{ chef_pencil_record.title }}
+

@@ -1,0 +1,30 @@
+version: "3.9"
+
+networks:
+  proxy: # docker network create --internal=false --attachable proxy
+    attachable: true
+    internal: false
+    name: proxy
+
+services:
+  rabbit:
+    image: rabbitmq:3.8.3
+    container_name: server-rabbit
+    restart: always
+    networks:
+      - proxy
+    env_file:
+      - ../.server.env
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+    ports:
+      - '5672:5672'
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=proxy
+      - traefik.http.routers.rabbitmq.entrypoints=websecure
+      - traefik.http.routers.rabbitmq.rule=Host(`${RABBIT_DOMAIN}`)
+      - traefik.http.routers.rabbitmq.tls=true
+      - traefik.http.routers.rabbitmq.tls.certresolver=letsencrypt
+      - traefik.http.routers.rabbitmq.service=rabbitmq_service
+      - traefik.http.services.rabbitmq_service.loadbalancer.server.port=5672

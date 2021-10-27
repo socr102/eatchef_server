@@ -1,0 +1,31 @@
+{% extends 'emails/layouts/base.html' %}
+
+{% block content %}
+<tr>
+    <td style="color: #464646; text-align: center;">
+        <p><b style="font-size: 32px; line-height: 39px; color: #353535;">Welcome to Eatchefs, {{ user.full_name }}!</b></p>
+        <p style="width: 80%; margin: 0 auto; border: 2px dashed #FFD994; border-radius: 18px; font-size: 24px; line-height: 29px; padding: 35px 20px; text-align: center; color: #353535;">
+            Your User Profile has been created! <br>
+            We thank You for registration and are happy to see You on our Website!
+            <br><br>
+            To gain access to the websites functionality You only need to confirm your Email:
+            <br><br>
+            <br><a href="{{ url }}" style="text-decoration: none; color: #ffffff; background-color: #ffa500; padding: 20px 90px; border-radius: 10px;">Click here</a>
+        </p>
+    </td>
+</tr>
+<tr>
+    <td style="font-size: 14px; line-height: 24px; color: #464646; text-align: center;">
+        <p style="width: 80%; margin: 0 auto; font-size: 24px; line-height: 29px; padding: 35px;">If you haven’t ever registered a User Profile, but have troubles connecting your Email, please contact our suppor: <a href="mailto:{{ email_from }}" style="color: #ffa500; text-decoration: none;">{{ email_from }}</a></p>       
+    </td>
+</tr>
+<tr>
+    <td style="font-size: 14px; line-height: 24px; color: #464646; text-align: center;">
+        <p style="width: 80%; margin: 0 auto; font-size: 24px; line-height: 29px; padding: 35px;">
+            For the Safety of our Users, we never store your Password unencrypted, for this reason we will not be able to send it to You.
+            <br><br>
+            If you have forgotten your password, you can reset it by following the link "Forgot your password?" in the login window.
+        </p>
+    </td>
+</tr>
+{% endblock %}

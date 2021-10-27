@@ -1,0 +1,51 @@
+version: "3.9"
+
+networks:
+  proxy: # docker network create --internal=false --attachable proxy
+    attachable: true
+    internal: false
+    name: proxy
+
+services:
+  main_beat:
+    image: ${MAIN_IMAGE}
+    restart: always
+    container_name: server-beat
+    networks:
+      - proxy
+    environment:
+      - WAITING_DATABASE=${WAITING_DATABASE:-"true"}
+      - MIGRATE=${MIGRATE:-"false"}
+      - API_DOMAIN=${API_DOMAIN}
+      - ADMIN_DOMAIN=${ADMIN_DOMAIN}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_PORT=${POSTGRES_PORT}
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
+      - RABBITMQ_ERLANG_COOKIE=${RABBITMQ_ERLANG_COOKIE}
+      - MAIN_IMAGE=${MAIN_IMAGE}
+      - GUNICORN_WORKERS_PER_NODE=${GUNICORN_WORKERS_PER_NODE}
+      - BASE_URL=${BASE_URL}
+      - BASE_CLIENT_URL=${BASE_CLIENT_URL}
+      - ALLOWED_HOSTS=${ALLOWED_HOSTS}
+      - DJANGO_SETTINGS_MODULE=${DJANGO_SETTINGS_MODULE}
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
+      - SECURE_AUTH_SALT=${SECURE_AUTH_SALT}
+      - DB_HOST=${DB_HOST}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_PORT=${DB_PORT}
+      - CELERY_BROKER_URL=${CELERY_BROKER_URL}
+      - EMAIL_HOST=${EMAIL_HOST}
+      - EMAIL_HOST_USER=${EMAIL_HOST_USER}
+      - EMAIL_HOST_PASSWORD=${EMAIL_HOST_PASSWORD}
+      - EMAIL_FROM=${EMAIL_FROM}
+    command: celery -A main beat -l info --pidfile=/tmp/celeryd.pid
+    healthcheck:
+      test: celery inspect ping
+      interval: 30s
+      timeout: 10s
+      retries: 3

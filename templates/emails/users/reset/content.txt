@@ -1,0 +1,13 @@
+{% block title %}
+    Attention!
+{% endblock %}
+
+{% block content %}
+    This is your new password:
+
+    {{ new_password }}
+
+    Follow this link ({{ auth_url }}) to authorize
+
+    You can change your password in your profile
+{% endblock %}

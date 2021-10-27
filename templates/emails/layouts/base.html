@@ -1,0 +1,18 @@
+<table
+    style="width: 100%; max-width: 800px; padding: 24px 0 64px; background: #ffffff; margin: 0 auto; border-spacing: 0;"
+>
+    {% include 'emails/layouts/header.html' %}
+    <tbody
+        style="width: 600px; display: block; margin: 0 auto; padding: 40px 52px;"
+    >
+        <tr style="padding-bottom: 16px; display: inline-table;">
+            <td style="font-weight: bold; font-size: 20px; line-height: 23px;">
+                {% block title %}
+                {% endblock %}
+            </td>
+        </tr>
+        {% block content %}
+        {% endblock %}
+    </tbody>
+    {% include 'emails/layouts/footer.html' %}
+</table>

@@ -1,0 +1,17 @@
+{% block title %}
+    Successful Submission: {{ chef_pencils_record.title }}
+{% endblock %}
+
+{% block content %}
+    Hi, {{ user.full_name }}
+
+    We would like to inform you that we received your Chef Pencil's record {{ chef_pencils_record.title }}. Our team is reviewing it and it will be published soon!
+
+    {{ image_url }}"
+
+    {{ chef_pencils_record.title }}
+
+    {{ url }}
+
+    Waiting for more creations from you!
+{% endblock %}

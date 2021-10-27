@@ -1,0 +1,17 @@
+{% block title %}
+    Dish Approved: {{ recipe.title }}
+{% endblock %}
+
+{% block content %}
+    Hi, {{ user.full_name }}
+
+    Congratulations, we reviewed your dish {{ recipe.title }} and it’d been approved and published.
+
+    {{ image_url }}"
+
+    {{ recipe.title }}
+
+    {{ url }}
+
+    Waiting for more creations from you!
+{% endblock %}

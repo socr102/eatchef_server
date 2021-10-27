@@ -1,0 +1,17 @@
+{% block title %}
+    Welcome to Eatchefs, {{ user.full_name }}!
+{% endblock %}
+
+{% block content %}
+    Your User Profile has been created!
+    We thank You for registration and are happy to see You on our Website!
+
+    To gain access to the websites functionality You only need to confirm your Email:
+    Click here ({{ url }})
+
+    If you haven’t ever registered a User Profile, but have troubles connecting your Email, please contact our support:
+    {{ email_from }}
+
+    For the Safety of our Users, we never store your Password unencrypted, for this reason we will not be able to send it to You.
+    If you have forgotten your password, you can reset it by following the link "Forgot your password?" in the login window.
+{% endblock %}

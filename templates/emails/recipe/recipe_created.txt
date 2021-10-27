@@ -1,0 +1,17 @@
+{% block title %}
+    Successful Submission: {{ recipe.title }}
+{% endblock %}
+
+{% block content %}
+    Hi, {{ user.full_name }}
+
+    We would like to inform you that we received your dish {{ recipe.title }}. Our team is reviewing it and it will be published soon!
+
+    {{ image_url }}"
+
+    {{ recipe.title }}
+
+    {{ url }}
+
+    Waiting for more creations from you!
+{% endblock %}

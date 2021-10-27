@@ -1,0 +1,45 @@
+version: "3.9"
+
+networks:
+  proxy: # docker network create --internal=false --attachable proxy
+    attachable: true
+    internal: false
+    name: proxy
+
+services:
+
+  node_exporter:
+    image: prom/node-exporter:latest
+    container_name: server-node_exporter
+    restart: unless-stopped
+    hostname: "node_exporter"
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"
+    ports:
+      - '9100:9100'
+    command:
+      - '--path.rootfs=/host'
+    networks:
+      - proxy
+    pid: host
+    volumes:
+      - '/:/host:ro,rslave'
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: cadvisor
+    ports:
+      - 8080:8080
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    command:
+      - '-housekeeping_interval=10s'
+      - '-docker_only=true'
+    networks:
+      - proxy

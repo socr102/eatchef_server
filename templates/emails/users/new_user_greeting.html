@@ -1,0 +1,72 @@
+{% extends 'emails/layouts/base.html' %}
+
+{% block content %}
+<tr>
+    <td style="font-size: 14px; line-height: 24px; color: #000000; text-align: center;">
+        <b style="font-size: 32px; line-height: 39px; color: #353535;">Hi, {{ user.full_name }}!</b>
+
+        <p style="font-size: 24px; line-height: 29px; color: #353535;">Welcome to EatChefs!</p>
+
+        <p style="width: 80%; margin: 0 auto; border: 2px dashed #FFD994; border-radius: 18px; font-size: 24px; line-height: 29px; padding: 35px; color: #353535;">Thank you for registration. We are happy to have you on our foodies’ platform. We would love to share with you our best dishes and new amazing recipes produced by the globe’s largest online home chef community.</p>
+
+        <p style="background: #FFF8EA; font-size: 24px; line-height: 29px; padding: 40px 79px; color: #353535;">
+            You can complete your profile here. Or even better! Join the community as Home Chef and unleash your culinary skills unto the world.
+            <br>
+            <br>
+            <br><a href="{{ url }}" style="text-decoration: none; color: #ffffff; background-color: #FFA500; padding: 20px 90px; border-radius: 10px;">Complete your profile</a>
+        </p>  
+    </td>
+</tr>
+<tr>
+    <td style="height: 37px;"></td>
+</tr>
+<tr>
+    <td style="font-size: 24px; line-height: 29px; background-color: #FFF8EA; padding: 37px 60px; text-align: center;">
+        <p style="color: #353535; font-size: 24px; line-height: 29px;"><b>This is your chance to get on-board during our testing phase which, once complete, will instantly grant you access to:</b></p>
+
+        <table style="margin: 0 auto; border: 2px dashed #FFD994; border-radius: 18px; font-size: 24px; line-height: 29px; padding: 18px 16px;">
+            <tr>
+                <td style="background-color: #FFA500; padding: 0; color: #ffffff; margin: 0; border-radius: 10px; text-align: left;">
+                    <span style="padding: 1px 8px; background-color: #ffffff; color: #FFA500; border-top-left-radius: 8px; border-bottom-right-radius: 8px;"><b>1</b></span>
+                    <p style="color: #ffffff; text-align: center; padding: 0 34px 18px 34px; margin: 0;"><b>Exciting opportunities and exclusive way to exhibit your chef abilities</b></p>
+                </td>
+            </tr>
+            <tr>
+                <td style="height: 20px;"></td>
+            </tr>
+            <tr>
+                <td style="background-color: #FFA500; padding: 0; color: #ffffff; margin: 0; border-radius: 10px; text-align: left;">
+                    <span style="padding: 1px 8px; background-color: #ffffff; color: #FFA500; border-top-left-radius: 8px; border-bottom-right-radius: 8px;"><b>2</b></span>
+                    <p style="color: #ffffff; text-align: center; padding: 0 34px 18px 34px; margin: 0;"><b>Special features on our platform to share your creative dish clips</b></p>
+                </td>
+            </tr>
+            <tr>
+                <td style="height: 20px;"></td>
+            </tr>
+            <tr>
+                <td style="background-color: #FFA500; padding: 0; color: #ffffff; margin: 0; border-radius: 10px; text-align: left;">
+                    <span style="padding: 1px 8px; background-color: #ffffff; color: #FFA500; border-top-left-radius: 8px; border-bottom-right-radius: 8px;"><b>3</b></span>
+                    <p style="color: #ffffff; text-align: center; padding: 0 34px 18px 34px; margin: 0;"><b>The ability to earn VOTES and REVIEWS from food lovers and fellow chefs worldwide</b></p>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td style="height: 37px;"></td>
+</tr>
+<tr>
+    <td>
+        <p style="width: 80%; margin: 0 auto; border: 2px dashed #FFD994; border-radius: 18px; font-size: 24px; line-height: 29px; padding: 35px 20px; text-align: center; color: #353535;">
+            Ready to share your skills online? Login here to add YOUR flavor to our global team. We can’t wait to see you in the kitchen.
+            <br>
+            <br>
+            <br><a href="{{ site_url }}" style="text-decoration: none; color: #ffffff; background-color: #FFA500; padding: 20px 90px; border-radius: 10px;">Discover a world of food</a>
+        </p>  
+    </td>
+</tr>
+{% endblock %}
+
+
+
+

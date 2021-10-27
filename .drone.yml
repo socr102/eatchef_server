@@ -1,0 +1,47 @@
+name: stage
+
+kind: pipeline      # https://docs.drone.io/pipeline/configuration/
+type: docker
+
+when:               # Only run the pipeline when it's a push to development
+  event: [ push ]
+  branch: [ development ]
+
+steps:
+
+  - name: build
+    image: plugins/docker
+    environment:
+      DJANGO_SECRET_KEY:
+        from_secret: DJANGO_STAGE_SECRET_KEY
+    settings:
+      repo: goodbitdev/builds
+      username: goodbitdev
+      password: s4N395613762
+      dockerfile: Dockerfile
+      tags: ["${DRONE_COMMIT_SHA:0:7}", "latest"]
+      build_args_from_env:
+        - DJANGO_SECRET_KEY
+      # tag: $$TAG # if not on every commit but for specific tags
+      # when:
+        # event: tag
+
+  - name: notify
+    image: appleboy/drone-discord
+    settings:
+      webhook_id: 893421615042404383
+      webhook_token: 64sAhkacw9k-eiDHh2ttp1aZ6Q1dN2UjNCOAGeyP2qV5YN8wuRxMlC7xDChPbzrRsiPG
+      username: drone.io
+      message: >
+       {{#success build.status}}
+         Build {{build.number}} of '{{repo.name}}' status: OK.
+         {{ build.link }}
+         Commit by {{commit.author}} on `{{commit.branch}}`:
+         ```{{commit.message}}```
+       {{else}}
+         ❌ Build {{build.number}} of '{{repo.name}}' status: FAIL.
+         {{ build.link }}
+         Commit by {{commit.author}} on `{{commit.branch}}`:
+         ```{{commit.message}}```
+       {{/success}}
+         Time: {{since build.started}}

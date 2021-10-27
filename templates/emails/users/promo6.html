@@ -1,0 +1,40 @@
+{% extends 'emails/layouts/base.html' %}
+
+{% block content %}
+<tr>
+    <td style="font-size: 14px; line-height: 24px; color: #000000; text-align: center;" colspan="2">
+        <p><b style="font-size: 32px; line-height: 39px; color: #353535;">What a day, {{ user.full_name }}!</b></p>
+
+        <p style="width: 80%; margin: 0 auto; font-size: 24px; line-height: 29px; padding: 35px;">Thanks for voting for Spicy Arrabiata Penne on Eatchefs. You made a wise choice, and clearly, our community agrees with you!</p>
+    </td>
+</tr>
+<tr>
+    <td style="height: 37px;" colspan="2"></td>
+</tr>
+<tr>
+    <td style="font-size: 24px; line-height: 29px; background-color: #FFF8EA; padding: 37px 60px; text-align: center;" colspan="2">
+        <p><b>Spicy Arrabiata Penne got enough votes this month to officially be put into production. And now, it’s finally available online for you to order immediately.</b></p>
+
+        <div style="margin: 0 auto; border: 2px dashed #FFD994; border-radius: 18px; font-size: 24px; line-height: 29px; padding: 18px 40px 50px 40px;">
+            <div style="font-size: 24px; line-height: 29px; color: #464646; text-align: center; border: 1px solid #b8b8b8; border-radius: 5px; padding: 0 0 30px 0; background-color: #ffffff;">       
+                <p style="margin: 0 0 20px 0;"><img width="100%" height="100%" src="{{ BASE_CLIENT_URL }}/images/index/food.png" style="border-radius: 5px;" /></p>
+        
+                <p style="padding: 0 20px; font-size: 24px; line-height: 29px; color: #464646;">Name recipe</p>
+
+                <p style="background-color: #f3f3f3; padding: 1px 7px; width: max-content; margin: 0 auto; border-radius: 5px;"><img src="{{ BASE_CLIENT_URL }}/images/index/Icon awesome-heart.svg" style="width: 18px; padding-right: 4px;"/>1k votes</p>
+            </div>
+            
+            <p>
+                <b>Come hungry</b> – click here to add it to your cart today!
+            </p>
+
+            <br><a href="{{ site_url }}" style="text-decoration: none; color: #ffffff; background-color: #FFA500; padding: 20px 30px; border-radius: 10px;">Add to cart</a>
+        </div>
+    </td>
+</tr>
+
+{% endblock %}
+
+
+
+

@@ -1,0 +1,33 @@
+version: "3.9"
+
+networks:
+  proxy: # docker network create --internal=false --attachable proxy
+    attachable: true
+    internal: false
+    name: proxy
+
+services:
+  logger:
+    image: umputun/docker-logger
+    container_name: server-logger
+    restart: always
+    hostname: "logger"
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"
+    environment:
+      - LOG_FILES=true
+      - LOG_SYSLOG=false
+      - EXCLUDE=docker-logger
+      - MAX_FILES=10
+      - MAX_SIZE=50
+      - MAX_AGE=20
+      - DEBUG=false
+      - TIME_ZONE=Europe/Kaliningrad
+    networks:
+      - proxy
+    volumes:
+      - ./logs:/srv/logs
+      - /var/run/docker.sock:/var/run/docker.sock

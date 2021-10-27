@@ -1,0 +1,34 @@
+from .common import *
+
+DEBUG = True
+
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'DJANGO_SECRET_KEY')
+
+BASE_URL = os.environ.get('BASE_URL', 'http://localhost:4096')
+BASE_CLIENT_URL = os.environ.get('BASE_CLIENT_URL', 'http://localhost:8030')
+
+# SECURITY WARNING: update this when you have the production host
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1']
+
+REDIS = {
+    'host': 'eatchef-redis',
+    'port': '6379',
+    'db': '1',
+}
+# Channels
+ASGI_APPLICATION = "main.websocket_routing.application"
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [(REDIS['host'], REDIS['port'])],
+        },
+    },
+}
+
+# Emails triggers
+SEND_ACTIVATION_EMAIL = True
+CHECK_EMAIL_ACTIVATION = False
+
+CELERY_BROKER_URL = 'amqp://main:BWgxXi6AoAM5VJwW@eatchef-rabbit:5672'
+CELERY_BROKER_TRANSPORT = 'amqp'
